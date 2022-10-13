@@ -1,17 +1,23 @@
+// color scheme
 $main-clr: #C3B1E1;
 $ui-clr: rgba(0, 0, 0, 0.5);
 $txt-clr: #fff;
+$success-clr: #0f0;
+$fail-clr: #f00;
 
+// helps no zoom / scroll
 body {
     position: relative;
 }
 
 html, body {
+    // general styles for the app
     background-color: $main-clr;
     padding: 0;
     margin: 0;
     overflow: hidden;
 
+    // styles for top bar
     form#options {
         background-color: $ui-clr;
         width: 100%;
@@ -38,6 +44,21 @@ html, body {
         }
     }
 
+    // styles for dots
+    div.dot {
+        background-color: $fail-clr;
+        border-radius: 50%;
+        position: fixed;
+        width: 3rem;
+        height: 3rem;
+        transition: top 5s, left 5s;
+
+        &:hover {
+            background-color: $success-clr;
+        }
+    }
+
+    // styles for time and score on bottom
     div#timescore {
         position: fixed;
         bottom: 0;
