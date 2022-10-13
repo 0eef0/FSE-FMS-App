@@ -1,7 +1,12 @@
+body {
+  position: relative;
+}
+
 html, body {
   background-color: #ff6961;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 html form#options, body form#options {
   background-color: rgba(0, 0, 0, 0.5);
@@ -19,7 +24,11 @@ html form#options select, html form#options button, body form#options select, bo
   border: 0;
   color: #fff;
   text-align: center;
+  transition: background-color 0.3s;
   font-size: calc(1vw + 1vh);
+}
+html form#options select:hover, html form#options button:hover, body form#options select:hover, body form#options button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 html div#timescore, body div#timescore {
   position: fixed;
