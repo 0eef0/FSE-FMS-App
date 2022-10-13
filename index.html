@@ -5,11 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" rel="/styles/styles.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 
-    <title>Document</title>
+    <title>FMS App</title>
 </head>
 <body>
+    <form id="options">
+        <select name="exercise" id="exercise">
+            <option value="OHF">One Hand Follow</option>
+            <option value="THD">Two Hand Follow</option>
+            <option value="TDD">Two Disappearing Dots</option>
+        </select>
+        <select name="difficulty" id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <select name="time" id="time">
+            <option value="130">1:30</option>
+            <option value="200">2:00</option>
+        </select>
+        <button>Start</button>
+    </form>
+
+    <div id="timescore">
+        <h1>Score: 0000</h1>
+        <h1>Time: 0:00</h1>
+    </div>
     
     <script src="./scripts/scripts.js"></script>
 </body>

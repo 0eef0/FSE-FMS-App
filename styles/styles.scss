@@ -1,0 +1,43 @@
+$main-clr: #ff6961;
+$ui-clr: rgba(0, 0, 0, 0.5);
+$txt-clr: #fff;
+
+html, body {
+    background-color: $main-clr;
+    padding: 0;
+    margin: 0;
+
+    form#options {
+        background-color: $ui-clr;
+        width: 100%;
+        height: 10vh;
+        min-height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        
+        select, button {
+            flex-grow: 1;
+            background-color: transparent;
+            outline: 0;
+            border: 0;
+            color: $txt-clr;
+            text-align: center;
+
+            font-size: calc(1vw + 1vh);
+        }
+    }
+
+    div#timescore {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        color: $txt-clr;
+        h1 {
+            margin: 0 0.5rem;
+        }
+    }
+}
