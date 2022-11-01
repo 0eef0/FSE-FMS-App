@@ -30,15 +30,41 @@ html form#options select, html form#options button, body form#options select, bo
 html form#options select:hover, html form#options button:hover, body form#options select:hover, body form#options button:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
+html table#results, body table#results {
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 40vh;
+  display: none;
+}
+html table#results td, body table#results td {
+  font-size: 2rem;
+  color: #fff;
+}
+html table#results #scoreHeader, body table#results #scoreHeader {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 3rem;
+}
+html table#results #scoreNums, body table#results #scoreNums {
+  text-align: right;
+  font-weight: bold;
+}
+html table#results #scoreBtn, body table#results #scoreBtn {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 html div.dot, body div.dot {
   background-color: #f00;
   border-radius: 50%;
   position: fixed;
-  width: 3rem;
-  height: 3rem;
-  transition: top 5s, left 5s;
+  width: 5rem;
+  height: 5rem;
+  transition: top 10s linear, left 10s linear;
 }
-html div.dot:hover, body div.dot:hover {
+html div.dot.touching, body div.dot.touching {
   background-color: #0f0;
 }
 html div#timescore, body div#timescore {
