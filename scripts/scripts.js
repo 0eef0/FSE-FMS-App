@@ -20,6 +20,30 @@ let scoreNumDOM = document.getElementById('scoreNum');
 let scoreMulDOM = document.getElementById('scoreMul');
 let scoreFinDOM = document.getElementById('scoreFin');
 
+const OHF = () => {
+    dotFieldDOM.innerHTML = `<div class="dot" id="d1" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;">one</div><div class="dot" id="d2" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;">two</div>`;
+    document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
+    document.getElementById("d1").style.left = `${Math.floor(Math.random() * window.innerWidth / 2)}px`;
+    var d1Rect = document.getElementById("d1").getBoundingClientRect();
+    document.getElementById("d2").style.top = `${Math.floor(Math.random() * 150 + d1Rect.y)}px`;
+    document.getElementById("d2").style.left = `${Math.floor(Math.random() * 150 + d1Rect.x)}px`;
+
+    dotInc.push(
+        setInterval(() => {
+            document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight + window.innerHeight / 10)}px`;
+            document.getElementById("d1").style.left = `${Math.floor(Math.random() * window.innerWidth)}px`;
+        }, difficultyDOM.value)
+    );
+    dotInc.push(
+        setInterval(() => {
+            var d1Rect = document.getElementById("d1").getBoundingClientRect();
+            document.getElementById("d2").style.top = `${Math.floor(Math.random() * 150 + d1Rect.y / 2)}px`;
+            document.getElementById("d2").style.left = `${Math.floor(Math.random() * 150 + d1Rect.x / 2)}px`;
+        }, 5000)
+    );
+}
+
+
 const THF = () => {
     dotFieldDOM.innerHTML = `<div class="dot" id="d1" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;"></div><div class="dot" id="d2" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;"></div>`;
     document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
@@ -43,6 +67,7 @@ const start = () => {
     switch(exerciseDOM.value) {
         case 'OHF':
             console.log('OHF');
+            OHF();
             break;
         case 'THF':
             console.log('THF');
