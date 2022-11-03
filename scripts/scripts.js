@@ -26,13 +26,13 @@ const THF = () => {
     document.getElementById("d1").style.left = `${Math.floor(Math.random() * window.innerWidth / 2)}px`;
     dotInc.push(
         setInterval(() => {
-            document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
+            document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight + window.innerHeight / 10)}px`;
             document.getElementById("d1").style.left = `${Math.floor(Math.random() * window.innerWidth / 2)}px`;
         }, difficultyDOM.value)
     );
     dotInc.push(
         setInterval(() => {
-            document.getElementById("d2").style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
+            document.getElementById("d2").style.top = `${Math.floor(Math.random() * window.innerHeight + window.innerHeight / 10)}px`;
             document.getElementById("d2").style.left = `${Math.floor((Math.random() * window.innerWidth / 2) + window.innerWidth / 2)}px`;
         }, 5000)
     );
