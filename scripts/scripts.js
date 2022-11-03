@@ -126,6 +126,7 @@ const start = () => {
 const closePopup = () => {
     document.getElementById('startBtn').disabled = false;
     document.getElementById('results').style.display = 'none';
+    score = 0;
 }
 
 // for(let i of dotsDOM) {
