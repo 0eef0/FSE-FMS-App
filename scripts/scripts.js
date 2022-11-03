@@ -82,19 +82,22 @@ const start = () => {
     }
 
     let dotsDOM = document.getElementsByClassName('dot');
+    let scoreInc = [];
     for(let i of dotsDOM) {
-        i.addEventListener('touchstart', () => {
+        i.addEventListener('touchstart', (e) => {
+            e.preventDefault();
             i.classList.add('touching');
-            dotInc.push(
+            scoreInc.push(
                 setInterval(() => {
                     score++;
                     scoreDOM.textContent = `Score: ${score}`;
                 }, 1)
             );
         })
-        i.addEventListener('touchend', () => {
+        i.addEventListener('touchend', (e) => {
+            e.preventDefault();
             i.classList.remove('touching');
-            clearInterval(dotInc[dotInc.length - 1]);
+            clearInterval(scoreInc[scoreInc.length - 1]);
         })
     }
 
@@ -108,6 +111,9 @@ const start = () => {
             clearInterval(scoreInc);
             dotInc.forEach(inc => clearInterval(inc));
             dotInc = [];
+
+            scoreInc.forEach(inc => clearInterval(inc));
+            scoreInc = [];
 
             let multi = (difficultyDOM.value == 5000) ? 1 : (difficultyDOM.value == 2500) ? 1.5 : 2;
             scoreNumDOM.textContent = score;
