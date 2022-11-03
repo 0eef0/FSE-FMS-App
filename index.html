@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="./styles/styles.css">
+
+    <title>FMS App</title>
+</head>
+<body>
+    <form id="options" action="javascript:void(0);">
+        <select name="exercise" id="exercise">
+            <option value="OHF">One Hand Follow</option>
+            <option value="THF">Two Hand Follow</option>
+            <option value="TDD">Two Disappearing Dots</option>
+        </select>
+        <select name="difficulty" id="difficulty">
+            <option value="5000">Easy</option>
+            <option value="2500">Medium</option>
+            <option value="1000">Hard</option>
+        </select>
+        <select name="time" id="time">
+            <option value="0:10">Testy</option>
+            <option value="1:30">1:30</option>
+            <option value="2:00">2:00</option>
+        </select>
+        <button onclick="start()" id="startBtn">Start</button>
+    </form>
+
+    <div id="dotField"></div>
+
+    <table id="results">
+        <tr>
+            <td colspan="2" class="scoreHeader">Time up!!!</td>
+        </tr>
+        <tr>
+            <td>Score:</td>
+            <td id="scoreNum">0000</td>
+        </tr>
+        <tr>
+            <td>Difficulty Multiplier:</td>
+            <td id="scoreMul">x0</td>
+        </tr>
+        <tr>
+            <td>Final Score:</td>
+            <td id="scoreFin">00000</td>
+        </tr>
+        <tr>
+            <td id="scoreBtn" colspan="2">
+                <button onclick="closePopup()">Close</button>
+            </td>
+        </tr>
+    </table>
+
+    <div id="timescore">
+        <h1 id="score">Score: 0000</h1>
+        <h1 id="timer">Time: 0:00</h1>
+    </div>
+    
+    <script src="./scripts/scripts.js"></script>
+</body>
+</html>
