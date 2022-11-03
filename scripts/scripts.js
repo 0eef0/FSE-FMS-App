@@ -64,6 +64,7 @@ const THF = () => {
 
 const start = () => {
     console.log('test');
+    document.getElementById('startBtn').disabled = true;
     switch(exerciseDOM.value) {
         case 'OHF':
             console.log('OHF');
@@ -117,6 +118,11 @@ const start = () => {
         }
         timerDOM.textContent = `Time: ${mins}:${(secs < 10) ? `0${secs}` : secs}`;
     }, 1000)
+}
+
+const closePopup = () => {
+    document.getElementById('startBtn').disabled = true;
+    document.getElementById('results').style.display = 'none';
 }
 
 // for(let i of dotsDOM) {
