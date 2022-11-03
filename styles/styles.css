@@ -30,6 +30,10 @@ html form#options select, html form#options button, body form#options select, bo
 html form#options select:hover, html form#options button:hover, body form#options select:hover, body form#options button:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
+html #dotField, body #dotField {
+  margin-top: 10vh;
+  height: 90vh;
+}
 html table#results, body table#results {
   position: fixed;
   top: 30%;
@@ -78,6 +82,4 @@ html div#timescore, body div#timescore {
 }
 html div#timescore h1, body div#timescore h1 {
   margin: 0 0.5rem;
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */
