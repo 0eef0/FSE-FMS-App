@@ -8,6 +8,7 @@ let timeInc;
 let dotInc = [];
 
 // DOM elements
+let optionsDOM = document.getElementById('options');
 let exerciseDOM = document.getElementById('exercise');
 let difficultyDOM = document.getElementById('difficulty');
 let timeDOM = document.getElementById('time');
@@ -21,7 +22,7 @@ let scoreMulDOM = document.getElementById('scoreMul');
 let scoreFinDOM = document.getElementById('scoreFin');
 
 const OHF = () => {
-    dotFieldDOM.innerHTML = `<div class="dot" id="d1" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;">one</div><div class="dot" id="d2" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;">two</div>`;
+    dotFieldDOM.innerHTML = `<div class="dot" id="d1" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;"></div><div class="dot" id="d2" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;"></div>`;
     document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
     document.getElementById("d1").style.left = `${Math.floor(Math.random() * window.innerWidth / 2)}px`;
     var d1Rect = document.getElementById("d1").getBoundingClientRect();
@@ -62,8 +63,23 @@ const THF = () => {
     );
 }
 
+const DD = () => {
+    dotFieldDOM.innerHTML = `<div class="dot" id="d1" style="width: ${difficultyDOM.value / 62.5}px; height: ${difficultyDOM.value / 62.5}px;" onmousedown="DDclick();"></div>`;
+    document.getElementById("d1").style.transition = 'none';
+    document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight + window.innerHeight / 10)}px`;
+    document.getElementById("d1").style.left = `${Math.floor(Math.random() * window.innerWidth / 2)}px`;
+}
+
+const DDclick = () => {
+    score += 1000;
+    scoreDOM.textContent = `Score: ${score}`;
+
+    document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight + window.innerHeight / 10)}px`;
+    document.getElementById("d1").style.left = `${Math.floor(Math.random() * window.innerWidth / 2)}px`;
+}
+
 const start = () => {
-    console.log('test');
+    optionsDOM.style.display = 'none';
     document.getElementById('startBtn').disabled = true;
     switch(exerciseDOM.value) {
         case 'OHF':
@@ -74,31 +90,34 @@ const start = () => {
             console.log('THF');
             THF();
             break;
-        case 'TDD':
-            console.log('TDD');
+        case 'DD':
+            console.log('DD');
+            DD();
             break;
         default:
             break;
     }
 
-    let dotsDOM = document.getElementsByClassName('dot');
-    let scoreInc = [];
-    for(let i of dotsDOM) {
-        i.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            i.classList.add('touching');
-            scoreInc.push(
-                setInterval(() => {
-                    score++;
-                    scoreDOM.textContent = `Score: ${score}`;
-                }, 1)
-            );
-        })
-        i.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            i.classList.remove('touching');
-            clearInterval(scoreInc[scoreInc.length - 1]);
-        })
+    if(exerciseDOM.value == 'OHF' || exerciseDOM.value == 'THF') {
+        let dotsDOM = document.getElementsByClassName('dot');
+        let scoreInc = [];
+        for(let i of dotsDOM) {
+            i.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                i.classList.add('touching');
+                scoreInc.push(
+                    setInterval(() => {
+                        score++;
+                        scoreDOM.textContent = `Score: ${score}`;
+                    }, 1)
+                );
+            })
+            i.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                i.classList.remove('touching');
+                clearInterval(scoreInc[scoreInc.length - 1]);
+            })
+        }
     }
 
     mins = timeDOM.value.split(":")[0];
@@ -109,10 +128,10 @@ const start = () => {
         if (mins == 0 && secs <= 0) {
             clearInterval(timeInc);
             clearInterval(scoreInc);
-            dotInc.forEach(inc => clearInterval(inc));
+            if(exerciseDOM.value == 'OHF' || exerciseDOM.value == 'THF') dotInc.forEach(inc => clearInterval(inc));
             dotInc = [];
 
-            scoreInc.forEach(inc => clearInterval(inc));
+            if(exerciseDOM.value == 'OHF' || exerciseDOM.value == 'THF') scoreInc.forEach(inc => clearInterval(inc));
             scoreInc = [];
 
             let multi = (difficultyDOM.value == 5000) ? 1 : (difficultyDOM.value == 2500) ? 1.5 : 2;
@@ -132,29 +151,7 @@ const start = () => {
 const closePopup = () => {
     document.getElementById('startBtn').disabled = false;
     document.getElementById('results').style.display = 'none';
+    optionsDOM.style.display = 'flex';
     score = 0;
+    scoreDOM.textContent = `Score: ${score}`;
 }
-
-// for(let i of dotsDOM) {
-//     i.addEventListener('touchstart', () => {
-//         i.classList.add('touching');
-//         scoreInc = setInterval(() => {
-//             score++;
-//             scoreDOM.textContent = `Score: ${score}`;
-//         }, 1)
-//     })
-//     i.addEventListener('touchend', () => {
-//         i.classList.remove('touching');
-//         clearInterval(scoreInc);
-//     })
-// }
-
-// sample code for moving dot
-// setInterval(() => {
-//     document.getElementById("d1").style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
-//     document.getElementById("d1").style.left = `${Math.floor(Math.random() * window.innerWidth / 2)}px`;
-// }, 5000);
-// setInterval(() => {
-//     document.getElementById("d2").style.top = `${Math.floor(Math.random() * window.innerHeight)}px`;
-//     document.getElementById("d2").style.left = `${Math.floor((Math.random() * window.innerWidth / 2) + window.innerWidth / 2)}px`;
-// }, 5000);
