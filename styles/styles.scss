@@ -57,6 +57,9 @@ html, body {
         width: 40%;
         height: 40vh;
         display: none;
+        border: 2px solid $txt-clr;
+        border-radius: 1rem;
+        padding: 1rem;
         
         td {
             font-size: 2rem;
@@ -75,6 +78,18 @@ html, body {
             display: flex;
             justify-content: center;
             width: 100%;
+            & button {
+                outline: none;
+                border: 2px solid $txt-clr;
+                border-radius: 1rem;
+                padding: 1rem;
+                background-color: transparent;
+                font-size: 2rem;
+                color: inherit;
+            }
+        }
+        .number {
+            text-align: right;
         }
     }
 
